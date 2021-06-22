@@ -13,7 +13,7 @@ export class CompanyService {
 
   // stock[]=new Stock[];
 
-  baseUrl='https://localhost:44340/api/Company';
+  baseUrl='https://localhost:44320/company';
 
   formData:CompanyDetail = new CompanyDetail();
   list : CompanyDetail[]=new Array();

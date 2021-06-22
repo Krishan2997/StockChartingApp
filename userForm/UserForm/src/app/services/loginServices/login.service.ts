@@ -20,11 +20,11 @@ export class LoginService {
   loggedInUser=new LogIn();
   static authentication:boolean=!!localStorage.getItem("SessionUser");
 
-  baseURL = 'https://localhost:44346';
+  baseURL = 'https://localhost:44320';
 
   login(userLogin: LogIn): Observable<Response> {
     this.loggedInUser.UserName=userLogin.UserName;
-    return this.http.post<Response>(`${this.baseURL}/user/login`, userLogin
+    return this.http.post<Response>(`${this.baseURL}/usrlogin`, userLogin
       // , { headers: this.httpOptions.headers }
     );
   }
@@ -40,7 +40,7 @@ export class LoginService {
   
     
     alert(httpOptions.headers);
-    return this.http.post<Response>(`${this.baseURL}/logout`, {user:user}
+    return this.http.post<Response>(`${this.baseURL}/logout`, {userName:user}
       , { headers: httpOptions.headers }
     );
   }

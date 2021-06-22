@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { LoginService } from '../../services/loginServices/login.service'
 
@@ -10,20 +11,22 @@ import { LoginService } from '../../services/loginServices/login.service'
 })
 export class SignupComponent implements OnInit {
 
-  constructor(public loginservices:LoginService) {
+  constructor(public loginservices: LoginService,
+    private router: Router) {
   }
 
-  onSubmit(form:NgForm){
+  onSubmit(form: NgForm) {
     this.loginservices.userSignUp().subscribe(
-      res=>{
+      res => {
         this.resetForm(form);
-        alert("hello success");
+        alert("sigup success");
+        this.router.navigateByUrl("login");
       },
-      err=>{console.log(err)}
-    )  
+      err => { console.log(err) }
+    )
   }
 
-  resetForm(form:NgForm){
+  resetForm(form: NgForm) {
     form.form.reset();
   }
 

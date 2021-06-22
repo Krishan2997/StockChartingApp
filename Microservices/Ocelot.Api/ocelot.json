@@ -9,8 +9,8 @@
           "Port": 44340
         }
       ],
-      "UpstreamPathTemplate": "/gateway/company",
-      "UpstreamHttpMethod": [ "POST", "PUT", "GET" ]
+      "UpstreamPathTemplate": "/company",
+      "UpstreamHttpMethod": [ "POST", "GET" ]
     },
     {
       "DownstreamPathTemplate": "/api/Company/{id}",
@@ -21,9 +21,10 @@
           "Port": 44340
         }
       ],
-      "UpstreamPathTemplate": "/gateway/company/{id}",
-      "UpstreamHttpMethod": [ "GET", "DELETE" ]
+      "UpstreamPathTemplate": "/company/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE", "PUT" ]
     },
+    //Not working currently
     {
       "DownstreamPathTemplate": "/api/stocks",
       "DownstreamScheme": "https",
@@ -35,7 +36,9 @@
       ],
       "UpstreamPathTemplate": "/gateway/stock",
       "UpstreamHttpMethod": [ "GET", "POST" ]
-    },
+    }
+    //
+    ,
     {
       "DownstreamPathTemplate": "/logout",
       "DownstreamScheme": "https",
@@ -46,11 +49,47 @@
         }
       ],
       "UpstreamPathTemplate": "/logout",
-      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "UpstreamHttpMethod": [ "POST" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer",
         "AllowedScopes": []
       }
+    },
+    {
+      "DownstreamPathTemplate": "/user/login",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44346
+        }
+      ],
+      "UpstreamPathTemplate": "/usrlogin",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/admin/login",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44346
+        }
+      ],
+      "UpstreamPathTemplate": "/admlogin",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/signup",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44346
+        }
+      ],
+      "UpstreamPathTemplate": "/signup",
+      "UpstreamHttpMethod": [ "POST" ]
     }
   ]
 }

@@ -68,7 +68,7 @@ namespace CompanyAPI.Controllers
             return company;
 
         }
-
+        /*
         [HttpGet("stock/{CompanyId}")]
         public ActionResult<long> GetStockPrice(int CompanyId)
         {
@@ -83,7 +83,6 @@ namespace CompanyAPI.Controllers
 
             return _context.IPOs.FirstOrDefault(i => i.CompanyId == CompanyId);
         }
-
-        
+        */
     }
 }

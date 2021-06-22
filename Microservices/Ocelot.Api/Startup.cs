@@ -31,7 +31,7 @@ namespace Ocelot.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var secret = "mykey";
+            var secret = "this is my key for authntication";
             var key = Encoding.ASCII.GetBytes(secret);
             services.AddAuthentication(option =>
             {
@@ -56,6 +56,23 @@ namespace Ocelot.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Ocelot.Api", Version = "v1" });
             });
+
+            //Allowing cors
+            
+            services.AddCors(
+                options =>
+                {
+                    options.AddPolicy(name: "CORS-Enabler",
+                        builder =>
+                        {
+                            builder.WithOrigins("http://locahost:4200")
+                                   .AllowAnyOrigin()
+                                   .AllowAnyHeader()
+                                   .AllowAnyMethod();
+                        });
+                }
+            );
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,6 +88,8 @@ namespace Ocelot.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("CORS-Enabler");
 
             app.UseAuthentication();
 

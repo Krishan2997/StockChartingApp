@@ -13,7 +13,7 @@ namespace CompanyAPI.Entities
         public string Brief { get; set; }
         public int StockCode { get; set; }
 
-        public IPOs IPOs { get; set; }
+        //public IPOs IPOs { get; set; }
 
     }
 }

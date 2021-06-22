@@ -30,13 +30,13 @@ namespace User.Api.Repository
             }
             else
             {
-                var pres = _context.LoggedInUsers.FirstOrDefault(u => u.UserID == admin.UserName);
+                var pres = _context.LoggedInUsers.FirstOrDefault(u => u.UserName == admin.UserName);
                 if (pres == null)
                 {
                     if (_localAuth.checkUser(admin))
                     {
                         var token = _localAuth.validateUser(logger);
-                        _context.LoggedInUsers.Add(new LoggedInUsers() { UserID = admin.UserName , token=token});
+                        _context.LoggedInUsers.Add(new LoggedInUsers() { UserName = admin.UserName , token=token});
                         _context.SaveChanges();
                         response.code = 1;
                         response.token = token;
@@ -58,7 +58,7 @@ namespace User.Api.Repository
         {
             var response = new Response();
             response.code = 0;
-            var pres = _context.LoggedInUsers.FirstOrDefault(u => u.UserID == user.user);
+            var pres = _context.LoggedInUsers.FirstOrDefault(u => u.UserName == user.userName);
             if (pres != null)
             {
                 _context.LoggedInUsers.Remove(pres);
@@ -88,13 +88,13 @@ namespace User.Api.Repository
                 response.token = "LogIn with Admin";
                 return response;
             }
-            var pres = _context.LoggedInUsers.FirstOrDefault(u => u.UserID == user.UserName);
+            var pres = _context.LoggedInUsers.FirstOrDefault(u => u.UserName == user.UserName);
             if (pres == null)
             {
                 if (_localAuth.checkUser(user))
                 {
                     var token = _localAuth.validateUser(logger);
-                    _context.LoggedInUsers.Add(new LoggedInUsers() { UserID = user.UserName , token=token});
+                    _context.LoggedInUsers.Add(new LoggedInUsers() { UserName = user.UserName , token=token});
                     _context.SaveChanges();
                     response.code = 1;
                     response.token = token;
@@ -116,7 +116,7 @@ namespace User.Api.Repository
             {
                 if (user.UserType.ToLower() == "user")
                 {
-                    user.Password = user.Password.GetHashCode().ToString();
+                    //user.Password = user.Password.GetHashCode().ToString();
                     _context.Add(user);
                     _context.SaveChanges();
                     response.code = 1;

@@ -7,7 +7,7 @@ namespace User.Api.Models
 {
     public class LogoutModel
     {
-        public string user { get; set; }
+        public string userName { get; set; }
 
     }
 }
