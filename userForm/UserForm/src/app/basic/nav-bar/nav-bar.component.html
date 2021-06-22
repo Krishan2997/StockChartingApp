@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">Stock Charting</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav mr-auto" *ngIf="loginService.getAuth()">
+
+      <!-- this will displayed after login -->
+      <li class="nav-item">
+        <a class="nav-link" href="">Import</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="manageCompanies">Manage Comapany</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="">Manage Exchange</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="">Update IPO's</a>
+      </li>
+    </ul>
+
+    <!-- <h6>{{ loginService.getAuth() }}</h6> -->
+    <!-- Log in button appears when no one is logged in -->
+    <ul class="navbar-nav ml-auto" *ngIf="!loginService.getAuth()">
+      <!-- <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li> -->
+      <li class="nav-item">
+        <a class="nav-link" href="login">LogIn</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="signup">Sign Up</a>
+      </li>
+    </ul>
+
+    <!-- Log out button appears only when someone is logged in -->
+    <ul class="navbar-nav ml-auto" *ngIf="loginService.getAuth()">
+      <li class="nav-item">
+        <button class="nav-link" (click)="logOut()">Log Out</button>
+      </li>
+    </ul>
+
+  </div>
+</nav>

@@ -1,0 +1,40 @@
+<div class="jumbotron py-3">
+    <h1 class="display-4 text-center">Company Register form</h1>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-6">
+      <app-company-form> </app-company-form>
+    </div>
+    <div class="col-md-6">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th>Company Name</th>
+            <th>TurnOver</th>
+            <th>CEO</th>
+            <th>Sector</th>
+            <th>Brief</th>
+            <th>StockCode</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cd of service.list">
+            <td (click)="populateForm(cd)">{{ cd.name }}</td>
+            <td (click)="populateForm(cd)">{{ cd.turnover }}</td>
+            <td (click)="populateForm(cd)">{{ cd.ceo }}</td>
+            <td (click)="populateForm(cd)">{{ cd.sector }}</td>
+            <td (click)="populateForm(cd)">{{ cd.brief }}</td>
+            <td (click)="populateForm(cd)">{{ cd.stockCode }}</td>
+            <td>
+              <i
+                class="far fa-trash-alt fa-lg text-danger"
+                (click)="onDelete(cd.id)"
+              ></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
