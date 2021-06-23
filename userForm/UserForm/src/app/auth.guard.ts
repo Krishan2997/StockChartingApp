@@ -19,6 +19,7 @@ export class AuthGuard implements CanActivate {
   canActivate():boolean
   {
     if(!this.loginservices.gettoken()){
+      alert("You need to login first");
       this.router.navigateByUrl("login");
     }
     return this.loginservices.gettoken();
