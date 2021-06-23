@@ -33,7 +33,7 @@ export class NavBarComponent implements OnInit {
         }
         else{
           //view response
-          alert(res.code + "\n" + res.token);
+          // alert(res.code + "\n" + res.token);
         }
       },
       err => {

@@ -39,7 +39,7 @@ export class LoginService {
     };
   
     
-    alert(httpOptions.headers);
+    // alert(httpOptions.headers);
     return this.http.post<Response>(`${this.baseURL}/logout`, {userName:user}
       , { headers: httpOptions.headers }
     );

@@ -13,8 +13,8 @@ const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
-    { path: 'company-details', component: CompanyDetailsComponent},
-    { path: 'upload', component: UploadComponent}
+    { path: 'company-details', component: CompanyDetailsComponent, canActivate:[AuthGuard]},
+    { path: 'upload', component: UploadComponent, canActivate:[AuthGuard]}
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

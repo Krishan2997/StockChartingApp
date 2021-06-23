@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CompanyService } from 'src/app/services/companyservices/company.service';
 import * as XLSX from 'xlsx';
 
@@ -9,7 +10,7 @@ import * as XLSX from 'xlsx';
 })
 export class UploadComponent implements OnInit {
 
-  constructor(private companyservices: CompanyService) { }
+  constructor(private companyservices: CompanyService, private router: Router) { }
 
   title = "xlsread";
   file: any
@@ -34,7 +35,9 @@ export class UploadComponent implements OnInit {
       this.jsonData = XLSX.utils.sheet_to_json(worksheet, { raw: true });
       // this.jsonData=JSON.stringify(this.jsonData);
       const alpha: Blob = new Blob([this.jsonData], { type: "application/json" });
-      // FileSaver.saveAs(data, "JsonFile" + new Date().getTime() + '.json'); 
+      
+      // this.data.showdata(this.jsonData);
+      /*
       this.companyservices.addStockPrice(this.jsonData).subscribe(
         res => {
           alert("success");
@@ -43,8 +46,11 @@ export class UploadComponent implements OnInit {
           // alert("error occured");
         }
       );
+      */
+    //  this.router.navigateByUrl("data");
       console.log(this.jsonData);
       this.filelist = [];
+      
     }
   }
 
